@@ -5,6 +5,12 @@ import re
 
 import random
 
+
+file = open("formatted_scores.txt", "r")
+read_file()
+remove_team_duplicates()
+
+
 class results_lookup:
     def __init__(self):
 
@@ -80,13 +86,12 @@ class results_lookup:
 
         # Adding combobox drop down list
         team2_selected['values'] = duplicate_function(TEAM_ABBREVIATION)
-
         team2_selected.grid(column = 3, row = 5, padx = 5)
         team2_selected.current()
 
 
 
-
+#end class results lookup
 
 
 
@@ -117,7 +122,7 @@ class Help:
         background = "orange"
 
         # disable help button
-        #partner.help_menu.entryconfig( "Help", state=DISABLED)
+        partner.help_menu.entryconfig( "Help", state=DISABLED)
 
         # Sets up child window (ie: help box)
         self.help_box = Toplevel()
@@ -148,7 +153,7 @@ class Help:
 
     def close_help(self, partner):
         # Put help button back to normal...
-        #partner.help_menu.entryconfig("Help", state=NORMAL)
+        partner.help_menu.entryconfig("Help", state=NORMAL)
         self.help_box.destroy()
 
 

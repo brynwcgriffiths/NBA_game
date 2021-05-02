@@ -80,7 +80,6 @@ def split_code(line):
   TOV.append(splitLine[16])
 
 def remove_team_duplicates():
-  print("Print Teams")
   teams_abb = []
   teams_city = []
   array_loop = 0
