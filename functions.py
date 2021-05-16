@@ -18,6 +18,7 @@ file = open("formatted_scores.txt", "r")
 root = tk
 
 
+
 def get_ready():
   print(TITLE)
   print(COL_HEADING)
@@ -158,8 +159,6 @@ def print_scores_file():
   f = open("formatted_scores.txt", "r")
   for x in f:
     print(x)
-
-
 
 
 
