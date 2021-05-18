@@ -8,10 +8,10 @@ import random
 file = open("formatted_scores.txt", "r")
 read_file()
 remove_team_duplicates()
-
 class results_lookup:
     def __init__(self): 
-       
+      
+      #p1 = PhotoImage(file = 'nbalogo.jpg')
       #self.run = True
       # Formatting variables
       
@@ -92,7 +92,7 @@ class results_lookup:
 
     # Submit button
       self.submit_btn = Button(self.lookup_frame, font="Arial 12 bold",
-                                            text="Submit", width=5, command=justamethod)
+                                            text="Submit", width=5, command=submit_func)
       self.submit_btn.grid(row=8, column=1)
 
 #end class results lookup
@@ -124,7 +124,7 @@ class results_lookup:
 
 
     def help(self):
-      if self.run:
+      #if self.run:
           get_help = Help(self)
           get_help.help_text.configure(text="Please select your teams "
                                             "and then push the submit button. \n\n"
@@ -133,7 +133,7 @@ class results_lookup:
                                             "You can "
                                             "also export the results of "
                                             "your search to a text file if desired.")
-          self.run = False
+          #self.run = False
 
           
 
@@ -178,11 +178,12 @@ class Help:
         self.help_box.destroy()
         something.run = True
 
-def justamethod (self): 
-    print("method is called")
-    print (self.team1_selected.get())
-    print (self.team2_selected.get())
+def submit_func(): 
+    print (something.team1_selected.get())
+    print (something.team2_selected.get())
 
+file.close()
+finish_up()
 # main routine
 if __name__ == "__main__":
     root = Tk()

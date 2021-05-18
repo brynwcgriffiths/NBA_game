@@ -20,20 +20,8 @@ root = tk
 
 
 def get_ready():
-  print(TITLE)
-  print(COL_HEADING)
   empty_lists()
 #end get_ready() funcion
-
-def menu_input():
-  print("Select from the list below:\n")
-  pos = 0
-  for x in MENU_LIST:
-    print(MENU_LIST[pos])
-    pos += 1
-  user_select = int(input("Your choice: >>"))
-  print()
-  return user_select
 
 def duplicate_function(x):
     return list(dict.fromkeys(x))
@@ -117,9 +105,6 @@ def print_records(item_arr, match):
 #end print_record() function
 
 def find_team_abb():
-  print("Which team would you like?")
-  print_teams_abb()
-  team1 = input("Enter TEAM_ABBREVIATION:>>").upper()
   #print("\nTEAM_ABBREVIATION is: " + team1)
   print()
   print_records(TEAM_ABBREVIATION, team1)
@@ -155,12 +140,6 @@ def read_file():
     split_code(line)
 #end read_file() function
 
-def print_scores_file():
-  f = open("formatted_scores.txt", "r")
-  for x in f:
-    print(x)
-
-
-
 def finish_up():
   print("\nEnd of Program")
+#end finish_up() function
