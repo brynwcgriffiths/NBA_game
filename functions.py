@@ -2,19 +2,7 @@ from variables import *
 import tkinter as tk
 from tkinter import ttk
 
-TITLE = "Title"
-COL_HEADING = "Heading"
-
-MENU_LIST = ["1. Print Scores", 
-              "2. Print Teams",
-              "3. Print a team's records", 
-              "4. Find a matching Game ID", 
-              "0. Exit"]
-
 file = open("formatted_scores.txt", "r")
-
-#submit button
-
 root = tk
 
 
@@ -68,19 +56,19 @@ def split_code(line):
   REB.append(splitLine[15])
   TOV.append(splitLine[16])
 
-def remove_team_duplicates():
-  teams_abb = []
-  teams_city = []
-  array_loop = 0
-  for x in TEAM_CITY_NAME: 
-    teams_city.append(TEAM_CITY_NAME[array_loop])
-    teams_abb.append(TEAM_ABBREVIATION[array_loop])
-    array_loop += 1
+# def remove_team_duplicates():
+#   teams_abb = []
+#   teams_city = []
+#   array_loop = 0
+#   for x in TEAM_CITY_NAME: 
+#     teams_city.append(TEAM_CITY_NAME[array_loop])
+#     teams_abb.append(TEAM_ABBREVIATION[array_loop])
+#     array_loop += 1
 
-  mylist1 = duplicate_function(teams_city) # Create a Dictionary to remove the duplicates
-  mylist2 = duplicate_function(teams_abb) # Create a Dictionary to remove the duplicates
-  mylist1.pop(0)
-  mylist2.pop(0)
+  # mylist1 = duplicate_function(teams_city) # Create a Dictionary to remove the duplicates
+  # mylist2 = duplicate_function(teams_abb) # Create a Dictionary to remove the duplicates
+  # mylist1.pop(0)
+  # mylist2.pop(0)
   #print("City Names (duplicates removed): ", mylist1)
   #print("City Names (duplicates removed): ", mylist2)
 
@@ -90,8 +78,6 @@ def remove_team_duplicates():
     array_loop += 1
   #print("In a dictionary: ", thisdict)
 
-def print_teams_abb():
-  print("Dic ABB: ", sorted(sports_teams_dict))
 
 def print_records(item_arr, match):
   array_loop = 0
@@ -104,11 +90,6 @@ def print_records(item_arr, match):
     array_loop += 1
 #end print_record() function
 
-def find_team_abb():
-  #print("\nTEAM_ABBREVIATION is: " + team1)
-  print()
-  print_records(TEAM_ABBREVIATION, team1)
-# end find_team_abb() function
 
 
 
@@ -120,7 +101,6 @@ def find_match():
     split_code(line)
     
     old_game_id = GAME_ID[pos-1]
-    #print("Test old game id: ", old_game_id, " is == to ", GAME_ID[pos-1])
     if old_game_id == GAME_ID[pos]:
       print("----------------------------")
       print("There is a match")
@@ -133,12 +113,16 @@ def control_break(id,match_arr):
     print("There is a match")
     print_records(id, match)
 
+
+
 def read_file():
   #read data
   pos = 0
   for line in file:
     split_code(line)
 #end read_file() function
+
+
 
 def finish_up():
   print("\nEnd of Program")
