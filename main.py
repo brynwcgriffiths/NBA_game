@@ -13,7 +13,10 @@ class results_lookup:
       #p1 = PhotoImage(file = 'nbalogo.jpg')
       #self.run = True
       # Formatting variables
-      
+      p1 = PhotoImage(file = 'nbalogo.png')
+ 
+# Setting icon of master window
+      root.iconphoto(False, p1)
 
       # Initialise list to hold results of user search
       self.all_results_list = []
@@ -377,7 +380,7 @@ def submit_func():
     
 
     f = open("formatted_scores.txt", "r")
-    if team1 == team2:
+    if team1 == team2 or team1 == "" or team2 == "":
         print("you are an idiot")
     else:
         pos = 0
@@ -389,9 +392,12 @@ def submit_func():
                 if (TEAM_ABBREVIATION[pos] == team1 or TEAM_ABBREVIATION[pos+-1] == team1) and (TEAM_ABBREVIATION[pos] == team2 or TEAM_ABBREVIATION[pos+-1] == team2):
                     print("----------------------------")
                     print("There is a match")
-                    print_records(GAME_ID, GAME_ID[pos])
+                    print_records(GAME_ID, old_game_id)
                     print("----------------------------")     
             pos += 1
+
+                
+            
 
 
 def control_break(id,match_arr):
