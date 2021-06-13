@@ -1,0 +1,7 @@
+Fix formating on the home window
+
+formatting results output
+
+export to txt
+
+testing/evaluation

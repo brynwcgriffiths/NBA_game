@@ -3,11 +3,12 @@ from tkinter import *
 from functools import partial   # To prevent unwanted windows
 import re
 
+
 import random
 
 file = open("formatted_scores.txt", "r")
 read_file()
-class results_lookup:
+class Search:
     def __init__(self): 
       
       #p1 = PhotoImage(file = 'nbalogo.jpg')
@@ -38,9 +39,10 @@ class results_lookup:
       
 
       # Frame
-      background_color = "light blue"
+      background_color = "red"
       self.lookup_frame = Frame(bg=background_color, pady=10)
-
+	  
+        
       self.lookup_frame.grid()
 
       # Heading (row 0)
@@ -96,6 +98,7 @@ class results_lookup:
       self.submit_btn = Button(self.lookup_frame, font="Arial 12 bold",
                                             text="Submit", width=5, command=self.results)
       self.submit_btn.grid(row=8, column=1)
+
 
 #   # results / Help button frame (row 5)
 #       self.hist_help_frame = Fram(self.converter_frame)
@@ -163,7 +166,7 @@ class Help:
         # Put help button back to normal...
         partner.nav.entryconfig("Help", state="normal")
         self.help_box.destroy()
-        something.run = True
+        #search.run = True
 #end class help
 
 
@@ -196,8 +199,7 @@ class results:
         self.results_text = Label(self.results_frame,
                                   text="Here are your results. Please use the "
                                        "export button to create a text "
-                                       "file of all your calculations for "
-                                       "this session", wrap=250,
+                                       "file of your search results.", wrap=250,
                                   font="arial 10 italic",
                                   justify=LEFT, bg=background, fg="maroon",
                                   padx=10, pady=10)
@@ -206,7 +208,8 @@ class results:
         # results Output goes here.. (row 2)
 
         # Generate string from list of calculations...
-        results_string = "ffff"
+        
+        results_string = submit_func()
 
         # if len(calc_results) > 7:
         #     for item in range(0, 7):
@@ -378,25 +381,27 @@ class Export:
 
 
 def submit_func(): 
-    team1 = something.team1_selected.get()
-    team2 = something.team2_selected.get()
-    f = open("formatted_scores.txt", "r")
+	team1 = search.team1_selected.get()
+	team2 = search.team2_selected.get()
+	f = open("formatted_scores.txt", "r")
 
-    if team1 == team2 or team1 == "" or team2 == "":
-        print("you are an idiot")
-    else:
-        pos = 2
-        for line in f:
-            split_code(line)
-            old_game_id = GAME_ID[pos-1]
-        #print("Test old game id: ", old_game_id, " is == to ", GAME_ID[pos-1])
-            if old_game_id == GAME_ID[pos]:
-                if (TEAM_ABBREVIATION[pos] == team1 or TEAM_ABBREVIATION[pos+-1] == team1) and (TEAM_ABBREVIATION[pos] == team2 or TEAM_ABBREVIATION[pos+-1] == team2):
-                    print("----------------------------")
-                    print("There is a match")
-                    print_records(GAME_ID, old_game_id)
-                    print("----------------------------")     
-            pos += 1
+	if team1 == team2 or team1 == "" or team2 == "":
+			idiot_message = ("you are an idiot")
+	else:
+			pos = 2
+			for line in f:
+					split_code(line)
+					old_game_id = GAME_ID[pos-1]
+			#print("Test old game id: ", old_game_id, " is == to ", GAME_ID[pos-1])
+					if old_game_id == GAME_ID[pos]:
+							if (TEAM_ABBREVIATION[pos] == team1 or TEAM_ABBREVIATION[pos+-1] == team1) and (TEAM_ABBREVIATION[pos] == team2 or TEAM_ABBREVIATION[pos+-1] == team2):
+									print("----------------------------")
+									print("There is a match")
+									submit_print = print_records(GAME_ID, old_game_id)
+									print("----------------------------")     
+					pos += 1
+	return submit_print
+	return idiot_message
 
      
             
@@ -410,8 +415,13 @@ file.close()
 finish_up()
 # main routine
 if __name__ == "__main__":
-    root = Tk()
-    root.title("NBA Game Finder")
-    something = results_lookup()
-    root.mainloop()
+	root = Tk()
+root.geometry("300x500")
+root.grid_rowconfigure(0, weight=1)
+root.grid_columnconfigure(0, weight=1)
+root.resizable(True, True)
+root.configure(bg="red")
+root.title("NBA Game Finder")
+search = Search()
+root.mainloop()
 

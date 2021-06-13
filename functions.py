@@ -7,6 +7,7 @@ root = tk
 
 
 
+team_results = ""
 def get_ready():
   empty_lists()
 #end get_ready() funcion
@@ -80,14 +81,15 @@ def split_code(line):
 
 
 def print_records(item_arr, match):
-  array_loop = 0
-  for x in item_arr:
-    if item_arr[array_loop] == match:
-      print("{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}".format(GAME_ID[array_loop], TEAM_ID[array_loop], GAME_DATE_EST[array_loop], 
-              TEAM_ABBREVIATION[array_loop], TEAM_CITY_NAME [array_loop], TEAM_WINS_LOSSES [array_loop], PTS_QTR1 [array_loop], 
-              PTS_QTR2 [array_loop], PTS_QTR3 [array_loop], PTS_QTR4 [array_loop], PTS [array_loop], FG_PCT [array_loop], 
-              FT_PCT [array_loop], FG3_PCT [array_loop], AST [array_loop], REB [array_loop], TOV [array_loop]))  
-    array_loop += 1
+	array_loop = 0
+	for x in item_arr:
+		if item_arr[array_loop] == match:
+			print_text = ("{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}".format(GAME_ID[array_loop], TEAM_ID[array_loop], GAME_DATE_EST[array_loop], 
+							TEAM_ABBREVIATION[array_loop], TEAM_CITY_NAME [array_loop], TEAM_WINS_LOSSES [array_loop], PTS_QTR1 [array_loop], 
+							PTS_QTR2 [array_loop], PTS_QTR3 [array_loop], PTS_QTR4 [array_loop], PTS [array_loop], FG_PCT [array_loop], 
+							FT_PCT [array_loop], FG3_PCT [array_loop], AST [array_loop], REB [array_loop], TOV [array_loop]))  
+		array_loop += 1
+	return print_text
 #end print_record() function
 
 
