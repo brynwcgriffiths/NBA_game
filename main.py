@@ -39,7 +39,7 @@ class Search:
       
 
       # Frame
-      background_color = "red"
+      background_color = "lightblue"
       self.lookup_frame = Frame(bg=background_color, pady=10)
 	  
         
@@ -48,17 +48,17 @@ class Search:
       # Heading (row 0)
       self.sports_heading_label = Label(self.lookup_frame,
                                       text="NBA Game Finder",
-                                      font="Arial 19 bold", bg=background_color,
+                                      font="Arial 24 bold", bg=background_color,
                                       padx=10, pady=10, justify= CENTER)
-      self.sports_heading_label.grid(row=0)
+      self.sports_heading_label.grid(row=0, column=1)
 
       # User instructions (row 1)
       self.sports_instructions_label = Label(self.lookup_frame,
                                             text="Select two teams and click submit to view the game stats for games between your selected teams during 2016-17 NBA season.",
-                                            font="Arial 10 italic", wrap=290,
+                                            font="Arial 12 italic", wrap=350,
                                             justify=CENTER, bg=background_color,
                                             padx=10 , pady=10)
-      self.sports_instructions_label.grid(row=1)
+      self.sports_instructions_label.grid(row=1, column=1)
 
 
 
@@ -72,16 +72,16 @@ class Search:
     # Adding combobox drop down list
       self.team1_selected['values'] = duplicate_function(sorted(TEAM_ABBREVIATION))
 
-      self.team1_selected.grid(column = 0, row = 4, padx = 5, pady= 20)
+      self.team1_selected.grid(column = 0, row = 5, padx = 5, pady= 20)
       self.team1_selected.current()
       
     # Team input (row 5)
       self.team_input_label = Label(self.lookup_frame,
                                             text="VS",
-                                            font="Arial 10 italic",
+                                            font="Arial 10 italic bold",
                                             justify= CENTER, bg=background_color,
                                             padx=10, pady=10)
-      self.team_input_label.grid(row=4, column = 1)
+      self.team_input_label.grid(row=5, column = 1)
 
     # Combobox creation
       n = tk.StringVar()
@@ -89,7 +89,7 @@ class Search:
 
       # Adding combobox drop down list
       self.team2_selected['values'] = duplicate_function(sorted(TEAM_ABBREVIATION))
-      self.team2_selected.grid(column = 2, row = 4, padx = 5, pady= 20)
+      self.team2_selected.grid(column = 2, row = 5, padx = 5, pady= 20)
       self.team2_selected.current()
 
 
@@ -97,7 +97,7 @@ class Search:
     # Submit button
       self.submit_btn = Button(self.lookup_frame, font="Arial 12 bold",
                                             text="Submit", width=5, command=self.results)
-      self.submit_btn.grid(row=8, column=1)
+      self.submit_btn.grid(row=8, column=1, pady=15)
 
 
 #   # results / Help button frame (row 5)
@@ -174,15 +174,15 @@ class Help:
 class results:
     def __init__(self, partner):
 
-        background = "#a9ef99"     # Pale green
+        background = "#a9ef69"     # Pale green
 
-        # disable results button
+        # disable submit button
         partner.submit_btn.config(state=DISABLED)
 
         # Sets up child window (ie: results box)
         self.results_box = Toplevel()
 
-        # If users press cross at top, closes results and 'releases' results button
+        # If users press cross at top, closes results and 'releases' submit button
         self.results_box.protocol('WM_DELETE_WINDOW',
                                   partial(self.close_results, partner))
 
@@ -191,7 +191,7 @@ class results:
         self.results_frame.grid()
 
         # Set up results heading (row 0)
-        self.how_heading = Label(self.results_frame, text="results",
+        self.how_heading = Label(self.results_frame, text="Results",
                                  font="arial 19 bold", bg=background)
         self.how_heading.grid(row=0)
 
@@ -416,11 +416,12 @@ finish_up()
 # main routine
 if __name__ == "__main__":
 	root = Tk()
-root.geometry("300x500")
+root.geometry("600x400")
+root.minsize(510, 325)
 root.grid_rowconfigure(0, weight=1)
 root.grid_columnconfigure(0, weight=1)
 root.resizable(True, True)
-root.configure(bg="red")
+root.configure(bg="lightblue")
 root.title("NBA Game Finder")
 search = Search()
 root.mainloop()

@@ -84,8 +84,8 @@ def print_records(item_arr, match):
 	array_loop = 0
 	for x in item_arr:
 		if item_arr[array_loop] == match:
-			print_text = ("{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}".format(GAME_ID[array_loop], TEAM_ID[array_loop], GAME_DATE_EST[array_loop], 
-							TEAM_ABBREVIATION[array_loop], TEAM_CITY_NAME [array_loop], TEAM_WINS_LOSSES [array_loop], PTS_QTR1 [array_loop], 
+			print_text = ("{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}".format(GAME_DATE_EST[array_loop], 
+							TEAM_ABBREVIATION[array_loop], TEAM_CITY_NAME [array_loop], PTS_QTR1 [array_loop], 
 							PTS_QTR2 [array_loop], PTS_QTR3 [array_loop], PTS_QTR4 [array_loop], PTS [array_loop], FG_PCT [array_loop], 
 							FT_PCT [array_loop], FG3_PCT [array_loop], AST [array_loop], REB [array_loop], TOV [array_loop]))  
 		array_loop += 1
