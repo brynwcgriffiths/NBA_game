@@ -5,7 +5,6 @@ from functools import partial  # To prevent unwanted windows
 import re
 import random
 
-global results_string
 global results_dict
 
 file = open("formatted_scores.txt", "r")
@@ -240,7 +239,7 @@ class Results:
         submitted_results = submit_func()
         results_string = ""
         for item in submitted_results:
-          results_string = results_string + submitted_results[item] + "\n"
+          results_string = results_string + "\n" + submitted_results[item]
         print(results_string)
         
         
@@ -305,13 +304,14 @@ def submit_func():
 
     if team1 == team2 or team1 == "" or team2 == "":
         #idiot_message = ("you are an idiot")
-        return "You have selected the same team. Please try again."
+        error_message = {"Error": "You have selected the same team. Please try again."}
+        return error_message
     else:
         pos = 2
         for line in f:
             split_code(line)
             old_game_id = GAME_ID[pos - 1]
-            print("Test old game id: ", old_game_id, " is == to ", GAME_ID[pos-1])
+            
             if old_game_id == GAME_ID[pos]:
                 if (TEAM_ABBREVIATION[pos] == team1
                         or TEAM_ABBREVIATION[pos + -1] == team1) and (
