@@ -307,22 +307,22 @@ def submit_func():
         error_message = {"Error": "You have selected the same team. Please try again."}
         return error_message
     else:
-        pos = 2
+        pos = 0
         for line in f:
             split_code(line)
             old_game_id = GAME_ID[pos - 1]
             
             if old_game_id == GAME_ID[pos]:
                 if (TEAM_ABBREVIATION[pos] == team1
-                        or TEAM_ABBREVIATION[pos + -1] == team1) and (
+                        or TEAM_ABBREVIATION[pos +- 1] == team1) and (
                             TEAM_ABBREVIATION[pos] == team2
-                            or TEAM_ABBREVIATION[pos + -1] == team2):
+                            or TEAM_ABBREVIATION[pos +- 1] == team2):
                     submit_print = print_records(GAME_ID, old_game_id)
                     print("----------------------------")
                     print("There is a match")
                     
                     # placing the Results into a dictionary to return where function is called
-                    results_dict[TEAM_ABBREVIATION[pos]]= submit_print
+                    results_dict[GAME_ID[pos]]= submit_print
                     print("Results Dict: ", results_dict)
                     print("----------------------------")
             pos += 1
