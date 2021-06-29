@@ -6,21 +6,17 @@ import re
 import random
 
 global results_dict
-
 file = open("formatted_scores.txt", "r")
-read_file()
 
 
 class Search:
     def __init__(self):
 
-        #p1 = PhotoImage(file = 'nbalogo.jpg')
-        #self.run = True
         # Formatting variables
-        p1 = PhotoImage(file='nbalogo.png')
+        favicon = PhotoImage(file='nbalogo.png')
 
         # Setting icon of master window
-        root.iconphoto(False, p1)
+        root.iconphoto(False, favicon)
 
         # Initialise list to hold Results of user search
         self.all_results_list = []
@@ -110,20 +106,9 @@ class Search:
                                  command=self.results)
         self.submit_btn.grid(row=8, column=1, pady=15)
 
-
-#   # results / Help button frame (row 5)
-#       self.hist_help_frame = Fram(self.converter_frame)
-#       self.hist_help_frame.grid(row=5, pady=10)
-
-#       self.submit_btn = Button(self.hist_help_frame, font="Arial 12 bold",
-#                                      text="Calculation results", width=15,
-#                                      command=lambda: self.results(self.all_calc_list))
-#       self.submit_btn.grid(row=0, column=0)
-
 #end class results lookup
 
     def help(self):
-        #if self.run:
         get_help = Help(self)
         get_help.help_text.configure(
             text="Please select your teams "
@@ -133,9 +118,8 @@ class Search:
             "You can "
             "also export the Results of "
             "your search to a text file if desired.")
-        #self.run = False
+						
     def results(self):
-        #if self.run:
         get_results = Results(self)
 
 
@@ -186,8 +170,6 @@ class Help:
         # Put help button back to normal...
         partner.nav.entryconfig("Help", state="normal")
         self.help_box.destroy()
-        #search.run = True
-
 
 #end class help
 
@@ -234,33 +216,15 @@ class Results:
 
         # Results Output goes here.. (row 2)
 
-        # Generate string from list of calculations...
+        # Generate string from list of results
         submitted_results = {}
         submitted_results = submit_func()
         results_string = ""
         for item in submitted_results:
           results_string = results_string + "\n" + submitted_results[item]
         print(results_string)
-        
-        
-        #results_string = print_results(submitted_results)
-        
-        # if len(calc_results) > 7:
-        #     for item in range(0, 7):
-        #         results_string += calc_results[len(calc_results)
-        #                                        - item - 1]+"\n"
 
-        # else:
-        #     for item in calc_results:
-        #         results_string += calc_results[len(calc_results) -
-        #                                        calc_results.index(item) - 1] + "\n"
-        #         self.results_text.config(text="Here is your calculation "
-        #                                       "Results.  You can use the "
-        #                                       "export button to save this "
-        #                                       "data to a text file if "
-        #                                       "desired.")
-
-        # Label to display calculation Results to user
+        # Label to display Results to user
         self.calc_label = Label(self.results_frame,
                                 text=results_string,
                                 bg=background,
@@ -300,7 +264,7 @@ def submit_func():
 
     team1 = search.team1_selected.get()
     team2 = search.team2_selected.get()
-    f = open("formatted_scores.txt", "r")
+		
 
     if team1 == team2 or team1 == "" or team2 == "":
         #idiot_message = ("you are an idiot")
@@ -308,7 +272,7 @@ def submit_func():
         return error_message
     else:
         pos = 0
-        for line in f:
+        for line in file:
             split_code(line)
             old_game_id = GAME_ID[pos - 1]
             

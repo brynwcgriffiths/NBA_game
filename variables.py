@@ -1,10 +1,3 @@
-#global variables
-teams_city = []
-teams_abb = []
-mylist1 = []
-mylist2 = []
-sports_teams_dict = {}
-
 GAME_ID = []
 TEAM_ID = []
 GAME_DATE_EST = []
