@@ -6,7 +6,7 @@ import re
 import random
 
 global results_dict
-file = open("formatted_scores.txt", "r")
+read_file()
 
 
 class Search:
@@ -264,16 +264,15 @@ def submit_func():
 
     team1 = search.team1_selected.get()
     team2 = search.team2_selected.get()
-		
+
 
     if team1 == team2 or team1 == "" or team2 == "":
-        #idiot_message = ("you are an idiot")
         error_message = {"Error": "You have selected the same team. Please try again."}
         return error_message
     else:
         pos = 0
         for line in file:
-            split_code(line)
+            # split_code(line)
             old_game_id = GAME_ID[pos - 1]
             
             if old_game_id == GAME_ID[pos]:
@@ -448,7 +447,7 @@ def control_break(id, match_arr):
         print_records(id, match)
 
 
-file.close()
+# file.close()
 # main routine
 if __name__ == "__main__":
     root = Tk()
